@@ -1,0 +1,33 @@
+# Odoo Community 18 + PostgreSQL 16 cho đồ án HTTTQL – The Pizza Company (HR)
+services:
+  db:
+    image: postgres:16
+    container_name: tpc_db
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+    volumes:
+      - tpc-db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  odoo:
+    image: odoo:18.0
+    container_name: tpc_odoo
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    environment:
+      HOST: db
+      USER: odoo
+      PASSWORD: odoo
+    volumes:
+      - tpc-odoo-data:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons
+    restart: unless-stopped
+
+volumes:
+  tpc-db-data:
+  tpc-odoo-data:

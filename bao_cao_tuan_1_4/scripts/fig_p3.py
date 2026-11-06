@@ -1,0 +1,97 @@
+"""P3 – Xếp ca: AS-IS và TO-BE."""
+from bpmn import *
+
+OUT = "../figures/"
+
+
+def as_is():
+    d = Diagram(1400)
+    d.pool("THE PIZZA COMPANY – CỬA HÀNG", [("ql", "Quản lý cửa hàng\n/ Quản lý ca", 165),
+                                            ("nv", "Nhân viên\n(FT/PT)", 140)])
+    d.event("s", 85, "ql", "start", "timer", "Cuối tuần\n(lập lịch tuần sau)")
+    d.task("t1", 185, "ql", "Nhắn nhóm Zalo\nyêu cầu báo lịch rảnh", "send")
+    d.task("t2", 300, "nv", "Gửi lịch rảnh\nqua Zalo / giấy", "manual")
+    d.data("dc", 420, d.at("nv", -8), "Lịch rảnh", collection=True)
+    d.task("t3", 420, "ql", "Tổng hợp lịch rảnh\nvào Excel", "manual", fill=PAIN_FILL)
+    d.task("t4", 545, "ql", "Xếp ca theo kinh\nnghiệm, thói quen", "manual", fill=PAIN_FILL)
+    d.task("t5", 670, "ql", "Gửi ảnh lịch ca\nlên nhóm Zalo", "send")
+    d.store("ds", 610, d.at("ql", 58), "Lịch ca (Excel)")
+    d.task("t6", 790, "nv", "Xem lịch ca", "manual")
+    d.gateway("g1", 890, "nv", "x", "Cần đổi ca /\nnghỉ đột xuất?", lpos="t")
+    d.task("t7", 995, "nv", "Nhắn QL\nxin đổi ca", "send", dy=40)
+    d.task("t8", 1110, "ql", "Gọi / nhắn tìm\nngười thay", "manual", fill=PAIN_FILL)
+    d.gateway("g2", 1225, "nv", "x")
+    d.event("e9", 1320, "nv", "end", label="Ca được\nthực hiện")
+    d.note("n1", 700, d.lane_edge("ql", "top") + 6,
+           "Không dùng Forecast Sales và định mức Productivity 330.000đ/giờ\n→ giờ công gần như cố định mỗi ngày (T8/2026: T2 thực tế 165 giờ\nso với định mức 94 giờ; T5: 172 so với 100 giờ)", w=330)
+    d.note("n2", 1170, d.lane_edge("ql", "top") + 6, "Đổi ca phụ thuộc điện thoại\ncủa QL, không có lịch sử", w=150)
+    d.flow("s", "t1"); d.flow("t1", "t2", route="hvh"); d.flow("t2", "t3", route="vh")
+    d.flow("t3", "t4"); d.flow("t4", "t5"); d.flow("t5", "t6", route="hvh")
+    d.flow("t6", "g1")
+    d.flow("g1", "g2", label="Không", lab_dx=30)
+    d.flow("g1", "t7", route="vh", label="Có", lab_dx=4, lab_dy=16)
+    d.flow("t7", "t8", route="hv", dst="b")
+    d.flow("t8", "g2", route="hv")
+    d.flow("g2", "e9")
+    d.assoc("t2", "dc", route="h"); d.assoc("dc", "t3", route="v")
+    d.assoc("t4", "ds", route="v")
+    d.point("n1b", 545, d.lane_edge("ql", "top") + 6 + 23)
+    d.assoc("t4", "n1b", via=[], src="t", dst="t")
+    d.point("n1l", 700, d.lane_edge("ql", "top") + 6 + 23)
+    d.assoc("t4", "n1l", via=[(545, d.lane_edge("ql", "top") + 6 + 23)], src="t", dst="t")
+    d.point("n2b", 1170, d.lane_edge("ql", "top") + 6 + 18)
+    d.assoc("t8", "n2b", via=[(1110, d.lane_edge("ql", "top") + 24)], src="t", dst="t")
+    d.save(OUT + "p3_asis.pdf"); d.save(OUT + "p3_asis.png")
+
+
+def to_be():
+    d = Diagram(1500)
+    d.pool("THE PIZZA COMPANY – CỬA HÀNG", [("ql", "Quản lý\ncửa hàng", 135),
+                                            ("sys", "Hệ thống Odoo\n(tpc_labour_planning)", 150),
+                                            ("nv", "Nhân viên\n(FT/PT)", 125)])
+    d.event("s", 85, "ql", "start", "timer", "Thứ Năm\nhằng tuần")
+    d.gateway("g0", 160, "ql", "+")
+    d.task("t1", 260, "ql", "Import Forecast Sales\ntuần tới (Excel)", "user")
+    d.data("di", 360, d.at("ql", -36), "Forecast\nSales", io="in")
+    d.task("t2", 260, "nv", "Cập nhật lịch rảnh\ntrên cổng NV", "user")
+    d.gateway("g1", 380, "sys", "+")
+    d.task("t3", 495, "sys", "Tính giờ cần/ngày\n= max(FS ÷ 330k, tối thiểu)", "rule", fill=SYS_FILL, w=130)
+    d.task("t4", 640, "sys", "Đề xuất ca nháp\ntheo Skill & lịch rảnh", "service", fill=SYS_FILL, w=120)
+    d.task("t5", 770, "ql", "Điều chỉnh,\nduyệt ca", "user")
+    d.gateway("g2", 875, "sys", "x", "%COL dự kiến\n≤ 13,65%?", lpos="b")
+    d.task("t6", 990, "sys", "Công bố ca, gửi\nemail/thông báo", "send", fill=SYS_FILL)
+    d.task("t7", 1100, "nv", "Xem \"Ca của tôi\"\ntrên điện thoại", "user")
+    d.gateway("g3", 1200, "nv", "x", "Cần đổi ca?", lpos="b")
+    d.task("t8", 1200, "sys", "Gợi ý người thay\ncùng Skill, còn giờ", "service", fill=SYS_FILL, dy=-25)
+    d.task("t9", 1320, "ql", "Duyệt yêu cầu\nđổi ca", "user")
+    d.gateway("g4", 1320, "nv", "x")
+    d.event("e9", 1420, "nv", "end", label="Ca được\nthực hiện")
+    d.store("ds", 640, d.at("nv", 0), "Skill, lịch rảnh\n(hr.employee)")
+    d.store("ds2", 990, d.at("sys", 52), "tpc.shift")
+    d.note("n1", 455, d.lane_edge("ql", "top") + 8,
+           "Ràng buộc: số người tối thiểu theo quầy/khung giờ;\nNV PT không vượt giờ/tuần; chỉ xếp NV đã đạt quầy", w=255)
+    d.flow("s", "g0")
+    d.flow("g0", "t1")
+    d.flow("g0", "t2", route="vh")
+    d.flow("t1", "g1", route="hv"); d.flow("t2", "g1", route="hv")
+    d.flow("g1", "t3"); d.flow("t3", "t4"); d.flow("t4", "t5", route="vh")
+    d.flow("t5", "g2", route="vh")
+    d.flow("g2", "t5", via=[(875 - 0, d.at("ql", 0))], src="t", dst="r", label="Vượt – chỉnh lại", lab_at=0, lab_dx=4, lab_dy=-40)
+    d.flow("g2", "t6", label="Đạt")
+    d.flow("t6", "t7", route="hv", dst="t")
+    d.flow("t7", "g3")
+    d.flow("g3", "t8", route="v", label="Có", lab_dx=4, lab_dy=-4)
+    d.flow("t8", "t9", route="vh")
+    d.flow("t9", "g4", route="v")
+    d.flow("g3", "g4", label="Không", lab_dx=20)
+    d.flow("g4", "e9")
+    d.assoc("di", "t1", route="v")
+    d.assoc("ds", "t4", route="v")
+    d.assoc("t6", "ds2", route="v")
+    d.point("n1b", 495, d.lane_edge("ql", "top") + 8 + 36)
+    d.assoc("t3", "n1b", via=[], src="t", dst="t")
+    d.save(OUT + "p3_tobe.pdf"); d.save(OUT + "p3_tobe.png")
+
+
+if __name__ == "__main__":
+    as_is(); to_be()
