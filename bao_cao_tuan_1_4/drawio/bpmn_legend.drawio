@@ -1,0 +1,112 @@
+<mxfile host="drawio" type="device">
+  <diagram id="bpmn" name="Chú giải ký hiệu BPMN">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1040" pageHeight="388" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pool2" value="Chú giải ký hiệu BPMN 2.0" style="swimlane;html=1;horizontal=0;startSize=26;fontStyle=1;fontSize=12;fillColor=#dfe3e8;swimlaneFillColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="0.0" y="0.0" width="1000.0" height="334.0" as="geometry" />
+        </mxCell>
+        <mxCell id="lane3" value="Sự kiện" style="swimlane;html=1;horizontal=0;startSize=26;fontStyle=0;fontSize=11;fillColor=#f2f3f5;swimlaneFillColor=#ffffff;" parent="pool2" vertex="1">
+          <mxGeometry x="26.0" y="0.0" width="974.0" height="78.0" as="geometry" />
+        </mxCell>
+        <mxCell id="lane4" value="Hoạt động&lt;br&gt;(Task)" style="swimlane;html=1;horizontal=0;startSize=26;fontStyle=0;fontSize=11;fillColor=#f2f3f5;swimlaneFillColor=#ffffff;" parent="pool2" vertex="1">
+          <mxGeometry x="26.0" y="78.0" width="974.0" height="86.0" as="geometry" />
+        </mxCell>
+        <mxCell id="lane5" value="Cổng&lt;br&gt;(Gateway)" style="swimlane;html=1;horizontal=0;startSize=26;fontStyle=0;fontSize=11;fillColor=#f2f3f5;swimlaneFillColor=#ffffff;" parent="pool2" vertex="1">
+          <mxGeometry x="26.0" y="164.0" width="974.0" height="78.0" as="geometry" />
+        </mxCell>
+        <mxCell id="lane6" value="Dữ liệu &amp;&lt;br&gt;Luồng" style="swimlane;html=1;horizontal=0;startSize=26;fontStyle=0;fontSize=11;fillColor=#f2f3f5;swimlaneFillColor=#ffffff;" parent="pool2" vertex="1">
+          <mxGeometry x="26.0" y="242.0" width="974.0" height="92.0" as="geometry" />
+        </mxCell>
+        <mxCell id="event7" value="Start&lt;br&gt;(bắt đầu)" style="shape=mxgraph.bpmn.event;html=1;outline=standard;symbol=general;fontSize=9;fillColor=#f1f8f1;strokeColor=#2e7d32;labelBackgroundColor=none;verticalLabelPosition=bottom;verticalAlign=top;" parent="lane3" vertex="1">
+          <mxGeometry x="69.0" y="14.0" width="30.0" height="30.0" as="geometry" />
+        </mxCell>
+        <mxCell id="event8" value="Start&lt;br&gt;Message" style="shape=mxgraph.bpmn.event;html=1;outline=standard;symbol=message;fontSize=9;fillColor=#f1f8f1;strokeColor=#2e7d32;labelBackgroundColor=none;verticalLabelPosition=bottom;verticalAlign=top;" parent="lane3" vertex="1">
+          <mxGeometry x="181.0" y="14.0" width="30.0" height="30.0" as="geometry" />
+        </mxCell>
+        <mxCell id="event9" value="Start&lt;br&gt;Timer" style="shape=mxgraph.bpmn.event;html=1;outline=standard;symbol=timer;fontSize=9;fillColor=#f1f8f1;strokeColor=#2e7d32;labelBackgroundColor=none;verticalLabelPosition=bottom;verticalAlign=top;" parent="lane3" vertex="1">
+          <mxGeometry x="293.0" y="14.0" width="30.0" height="30.0" as="geometry" />
+        </mxCell>
+        <mxCell id="event10" value="Intermediate&lt;br&gt;Message (nhận)" style="shape=mxgraph.bpmn.event;html=1;outline=catching;symbol=message;fontSize=9;fillColor=#ffffff;strokeColor=#000000;labelBackgroundColor=none;verticalLabelPosition=bottom;verticalAlign=top;" parent="lane3" vertex="1">
+          <mxGeometry x="405.0" y="14.0" width="30.0" height="30.0" as="geometry" />
+        </mxCell>
+        <mxCell id="event11" value="Intermediate&lt;br&gt;Timer (chờ)" style="shape=mxgraph.bpmn.event;html=1;outline=catching;symbol=timer;fontSize=9;fillColor=#ffffff;strokeColor=#000000;labelBackgroundColor=none;verticalLabelPosition=bottom;verticalAlign=top;" parent="lane3" vertex="1">
+          <mxGeometry x="517.0" y="14.0" width="30.0" height="30.0" as="geometry" />
+        </mxCell>
+        <mxCell id="event12" value="Intermediate&lt;br&gt;Conditional" style="shape=mxgraph.bpmn.event;html=1;outline=catching;symbol=conditional;fontSize=9;fillColor=#ffffff;strokeColor=#000000;labelBackgroundColor=none;verticalLabelPosition=bottom;verticalAlign=top;" parent="lane3" vertex="1">
+          <mxGeometry x="629.0" y="14.0" width="30.0" height="30.0" as="geometry" />
+        </mxCell>
+        <mxCell id="event13" value="End&lt;br&gt;(kết thúc)" style="shape=mxgraph.bpmn.event;html=1;outline=end;symbol=general;fontSize=9;fillColor=#fbeeee;strokeColor=#b71c1c;labelBackgroundColor=none;verticalLabelPosition=bottom;verticalAlign=top;" parent="lane3" vertex="1">
+          <mxGeometry x="741.0" y="14.0" width="30.0" height="30.0" as="geometry" />
+        </mxCell>
+        <mxCell id="event14" value="End&lt;br&gt;Message (gửi)" style="shape=mxgraph.bpmn.event;html=1;outline=end;symbol=message;fontSize=9;fillColor=#fbeeee;strokeColor=#b71c1c;labelBackgroundColor=none;verticalLabelPosition=bottom;verticalAlign=top;" parent="lane3" vertex="1">
+          <mxGeometry x="853.0" y="14.0" width="30.0" height="30.0" as="geometry" />
+        </mxCell>
+        <mxCell id="task15" value="Task" style="shape=mxgraph.bpmn.task;whiteSpace=wrap;html=1;rectStyle=rounded;size=10;fontSize=10;taskMarker=abstract;fillColor=#eef4fb;" parent="lane4" vertex="1">
+          <mxGeometry x="44.0" y="16.0" width="100.0" height="54.0" as="geometry" />
+        </mxCell>
+        <mxCell id="task16" value="User Task&lt;br&gt;(trên hệ thống)" style="shape=mxgraph.bpmn.task;whiteSpace=wrap;html=1;rectStyle=rounded;size=10;fontSize=10;taskMarker=user;fillColor=#eef4fb;" parent="lane4" vertex="1">
+          <mxGeometry x="162.0" y="16.0" width="100.0" height="54.0" as="geometry" />
+        </mxCell>
+        <mxCell id="task17" value="Manual Task&lt;br&gt;(thủ công)" style="shape=mxgraph.bpmn.task;whiteSpace=wrap;html=1;rectStyle=rounded;size=10;fontSize=10;taskMarker=manual;fillColor=#eef4fb;" parent="lane4" vertex="1">
+          <mxGeometry x="280.0" y="16.0" width="100.0" height="54.0" as="geometry" />
+        </mxCell>
+        <mxCell id="task18" value="Service Task&lt;br&gt;(hệ thống tự động)" style="shape=mxgraph.bpmn.task;whiteSpace=wrap;html=1;rectStyle=rounded;size=10;fontSize=10;taskMarker=service;fillColor=#eef4fb;" parent="lane4" vertex="1">
+          <mxGeometry x="398.0" y="16.0" width="100.0" height="54.0" as="geometry" />
+        </mxCell>
+        <mxCell id="task19" value="Send Task" style="shape=mxgraph.bpmn.task;whiteSpace=wrap;html=1;rectStyle=rounded;size=10;fontSize=10;taskMarker=send;fillColor=#eef4fb;" parent="lane4" vertex="1">
+          <mxGeometry x="516.0" y="16.0" width="100.0" height="54.0" as="geometry" />
+        </mxCell>
+        <mxCell id="task20" value="Receive Task" style="shape=mxgraph.bpmn.task;whiteSpace=wrap;html=1;rectStyle=rounded;size=10;fontSize=10;taskMarker=receive;fillColor=#eef4fb;" parent="lane4" vertex="1">
+          <mxGeometry x="634.0" y="16.0" width="100.0" height="54.0" as="geometry" />
+        </mxCell>
+        <mxCell id="task21" value="Business Rule&lt;br&gt;Task" style="shape=mxgraph.bpmn.task;whiteSpace=wrap;html=1;rectStyle=rounded;size=10;fontSize=10;taskMarker=businessRule;fillColor=#eef4fb;" parent="lane4" vertex="1">
+          <mxGeometry x="752.0" y="16.0" width="100.0" height="54.0" as="geometry" />
+        </mxCell>
+        <mxCell id="task22" value="Sub-Process&lt;br&gt;+ Loop" style="shape=mxgraph.bpmn.task;whiteSpace=wrap;html=1;rectStyle=rounded;size=10;fontSize=10;taskMarker=abstract;fillColor=#eef4fb;isLoopStandard=1;isLoopSub=1;" parent="lane4" vertex="1">
+          <mxGeometry x="870.0" y="16.0" width="92.0" height="54.0" as="geometry" />
+        </mxCell>
+        <mxCell id="gw23" value="Exclusive (XOR)&lt;br&gt;chỉ 1 nhánh" style="shape=mxgraph.bpmn.gateway2;html=1;perimeter=rhombusPerimeter;outline=none;symbol=none;gwType=exclusive;fillColor=#fff6dc;fontSize=9;labelPosition=right;align=left;" parent="lane5" vertex="1">
+          <mxGeometry x="83.0" y="22.0" width="42.0" height="42.0" as="geometry" />
+        </mxCell>
+        <mxCell id="gw24" value="Parallel (AND)&lt;br&gt;mọi nhánh" style="shape=mxgraph.bpmn.gateway2;html=1;perimeter=rhombusPerimeter;outline=none;symbol=none;gwType=parallel;fillColor=#fff6dc;fontSize=9;labelPosition=right;align=left;" parent="lane5" vertex="1">
+          <mxGeometry x="233.0" y="22.0" width="42.0" height="42.0" as="geometry" />
+        </mxCell>
+        <mxCell id="gw25" value="Inclusive (OR)&lt;br&gt;1 hoặc nhiều nhánh" style="shape=mxgraph.bpmn.gateway2;html=1;perimeter=rhombusPerimeter;outline=none;symbol=none;gwType=inclusive;fillColor=#fff6dc;fontSize=9;labelPosition=right;align=left;" parent="lane5" vertex="1">
+          <mxGeometry x="383.0" y="22.0" width="42.0" height="42.0" as="geometry" />
+        </mxCell>
+        <mxCell id="gw26" value="Event-based&lt;br&gt;theo sự kiện" style="shape=mxgraph.bpmn.gateway2;html=1;perimeter=rhombusPerimeter;outline=none;symbol=none;gwType=eventBased;fillColor=#fff6dc;fontSize=9;labelPosition=right;align=left;" parent="lane5" vertex="1">
+          <mxGeometry x="533.0" y="22.0" width="42.0" height="42.0" as="geometry" />
+        </mxCell>
+        <mxCell id="task27" value="Task do hệ thống&lt;br&gt;thực hiện (TO-BE)" style="shape=mxgraph.bpmn.task;whiteSpace=wrap;html=1;rectStyle=rounded;size=10;fontSize=10;taskMarker=abstract;fillColor=#e3f1e6;" parent="lane5" vertex="1">
+          <mxGeometry x="709.0" y="16.0" width="110.0" height="46.0" as="geometry" />
+        </mxCell>
+        <mxCell id="task28" value="Bước gây tắc nghẽn&lt;br&gt;(AS-IS)" style="shape=mxgraph.bpmn.task;whiteSpace=wrap;html=1;rectStyle=rounded;size=10;fontSize=10;taskMarker=abstract;fillColor=#fdecea;" parent="lane5" vertex="1">
+          <mxGeometry x="839.0" y="16.0" width="110.0" height="46.0" as="geometry" />
+        </mxCell>
+        <mxCell id="data29" value="Data Object" style="shape=mxgraph.bpmn.data;html=1;size=8;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;fontSize=9;fontStyle=2;" parent="lane6" vertex="1">
+          <mxGeometry x="71.0" y="15.0" width="26.0" height="34.0" as="geometry" />
+        </mxCell>
+        <mxCell id="data30" value="Data Object&lt;br&gt;Collection" style="shape=mxgraph.bpmn.data;html=1;size=8;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;fontSize=9;fontStyle=2;isCollection=1;" parent="lane6" vertex="1">
+          <mxGeometry x="166.0" y="15.0" width="26.0" height="34.0" as="geometry" />
+        </mxCell>
+        <mxCell id="store31" value="Data Store" style="shape=datastore;html=1;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;fontSize=9;fontStyle=2;" parent="lane6" vertex="1">
+          <mxGeometry x="255.0" y="15.0" width="38.0" height="34.0" as="geometry" />
+        </mxCell>
+        <mxCell id="note32" value="Text Annotation&lt;br&gt;(ghi chú)" style="shape=partialRectangle;html=1;top=0;bottom=0;right=0;left=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;whiteSpace=wrap;fontSize=9;fontColor=#57606a;strokeColor=#57606a;" parent="lane6" vertex="1">
+          <mxGeometry x="339.0" y="16.0" width="95.0" height="36.0" as="geometry" />
+        </mxCell>
+        <mxCell id="edge36" value="" style="html=1;rounded=0;endArrow=block;endFill=1;endSize=7;fontSize=9;exitX=0.5000;exitY=0.8383;exitDx=0;exitDy=0;entryX=0.6100;entryY=0.8383;entryDx=0;entryDy=0;" parent="1" edge="1" source="pool2" target="pool2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge37" value="" style="html=1;rounded=0;dashed=1;dashPattern=8 4;endArrow=block;endFill=0;startArrow=oval;startFill=0;startSize=6;fontSize=9;exitX=0.6650;exitY=0.8383;exitDx=0;exitDy=0;entryX=0.7750;entryY=0.8383;entryDx=0;entryDy=0;" parent="1" edge="1" source="pool2" target="pool2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge38" value="" style="html=1;rounded=0;dashed=1;dashPattern=1 3;strokeColor=#57606a;fontSize=9;endArrow=none;exitX=0.8300;exitY=0.8383;exitDx=0;exitDy=0;entryX=0.9400;entryY=0.8383;entryDx=0;entryDy=0;" parent="1" edge="1" source="pool2" target="pool2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,14 @@
+# Python >= 3.10
+# Cài đặt: pip install -r requirements.txt
+
+# Vẽ sơ đồ BPMN/UML và biểu đồ phân tích (bao_cao_tuan_1_4/scripts)
+matplotlib>=3.7
+numpy>=1.24
+
+# Đọc và xử lý Data_do_an.xlsx (data_prep.py, charts.py)
+pandas>=2.0
+openpyxl>=3.1
+
+# Chụp màn hình Odoo cho báo cáo (odoo/scripts/screenshots.py)
+# Sau khi cài cần chạy thêm: playwright install chromium
+playwright>=1.40

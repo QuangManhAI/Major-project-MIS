@@ -1,0 +1,77 @@
+<mxfile host="drawio" type="device">
+  <diagram id="bpmn" name="Tổng thể quy trình HR">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1340" pageHeight="224" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pool2" value="THE PIZZA COMPANY" style="swimlane;html=1;horizontal=0;startSize=26;fontStyle=1;fontSize=12;fillColor=#dfe3e8;swimlaneFillColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="0.0" y="0.0" width="1300.0" height="170.0" as="geometry" />
+        </mxCell>
+        <mxCell id="lane3" value="Cửa hàng" style="swimlane;html=1;horizontal=0;startSize=26;fontStyle=0;fontSize=11;fillColor=#f2f3f5;swimlaneFillColor=#ffffff;" parent="pool2" vertex="1">
+          <mxGeometry x="26.0" y="0.0" width="1274.0" height="170.0" as="geometry" />
+        </mxCell>
+        <mxCell id="event4" value="Phát sinh nhu cầu&lt;br&gt;nhân sự" style="shape=mxgraph.bpmn.event;html=1;outline=standard;symbol=general;fontSize=9;fillColor=#f1f8f1;strokeColor=#2e7d32;labelBackgroundColor=none;verticalLabelPosition=bottom;verticalAlign=top;" parent="lane3" vertex="1">
+          <mxGeometry x="49.0" y="60.0" width="30.0" height="30.0" as="geometry" />
+        </mxCell>
+        <mxCell id="task5" value="P1. Tuyển dụng" style="shape=mxgraph.bpmn.task;whiteSpace=wrap;html=1;rectStyle=rounded;size=10;fontSize=10;taskMarker=abstract;fillColor=#eef4fb;isLoopSub=1;" parent="lane3" vertex="1">
+          <mxGeometry x="129.0" y="46.0" width="130.0" height="58.0" as="geometry" />
+        </mxCell>
+        <mxCell id="task6" value="P2. Onboarding&lt;br&gt;&amp; đào tạo" style="shape=mxgraph.bpmn.task;whiteSpace=wrap;html=1;rectStyle=rounded;size=10;fontSize=10;taskMarker=abstract;fillColor=#eef4fb;isLoopSub=1;" parent="lane3" vertex="1">
+          <mxGeometry x="309.0" y="46.0" width="130.0" height="58.0" as="geometry" />
+        </mxCell>
+        <mxCell id="task7" value="P3. Xếp ca&lt;br&gt;(hằng tuần)" style="shape=mxgraph.bpmn.task;whiteSpace=wrap;html=1;rectStyle=rounded;size=10;fontSize=10;taskMarker=abstract;fillColor=#eef4fb;isLoopStandard=1;isLoopSub=1;" parent="lane3" vertex="1">
+          <mxGeometry x="489.0" y="46.0" width="130.0" height="58.0" as="geometry" />
+        </mxCell>
+        <mxCell id="task8" value="P4. Chấm công&lt;br&gt;&amp; theo dõi %COL" style="shape=mxgraph.bpmn.task;whiteSpace=wrap;html=1;rectStyle=rounded;size=10;fontSize=10;taskMarker=abstract;fillColor=#eef4fb;isLoopStandard=1;isLoopSub=1;" parent="lane3" vertex="1">
+          <mxGeometry x="669.0" y="46.0" width="130.0" height="58.0" as="geometry" />
+        </mxCell>
+        <mxCell id="gw9" value="Thiếu người /&lt;br&gt;NV nghỉ việc?" style="shape=mxgraph.bpmn.gateway2;html=1;perimeter=rhombusPerimeter;outline=none;symbol=none;gwType=exclusive;fillColor=#fff6dc;fontSize=9;verticalLabelPosition=top;verticalAlign=bottom;" parent="lane3" vertex="1">
+          <mxGeometry x="853.0" y="54.0" width="42.0" height="42.0" as="geometry" />
+        </mxCell>
+        <mxCell id="gw10" value="Hết kỳ&lt;br&gt;phân tích?" style="shape=mxgraph.bpmn.gateway2;html=1;perimeter=rhombusPerimeter;outline=none;symbol=none;gwType=exclusive;fillColor=#fff6dc;fontSize=9;verticalLabelPosition=top;verticalAlign=bottom;" parent="lane3" vertex="1">
+          <mxGeometry x="973.0" y="54.0" width="42.0" height="42.0" as="geometry" />
+        </mxCell>
+        <mxCell id="event11" value="Báo cáo nhân sự&lt;br&gt;&amp; %COL tháng" style="shape=mxgraph.bpmn.event;html=1;outline=end;symbol=general;fontSize=9;fillColor=#fbeeee;strokeColor=#b71c1c;labelBackgroundColor=none;verticalLabelPosition=bottom;verticalAlign=top;" parent="lane3" vertex="1">
+          <mxGeometry x="1089.0" y="60.0" width="30.0" height="30.0" as="geometry" />
+        </mxCell>
+        <mxCell id="edge12" value="" style="html=1;rounded=0;endArrow=block;endFill=1;endSize=7;fontSize=9;exitX=1.0000;exitY=0.5000;exitDx=0;exitDy=0;entryX=0.0000;entryY=0.5000;entryDx=0;entryDy=0;" parent="1" edge="1" source="event4" target="task5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge13" value="" style="html=1;rounded=0;endArrow=block;endFill=1;endSize=7;fontSize=9;exitX=1.0000;exitY=0.5000;exitDx=0;exitDy=0;entryX=0.0000;entryY=0.5000;entryDx=0;entryDy=0;" parent="1" edge="1" source="task5" target="task6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge14" value="" style="html=1;rounded=0;endArrow=block;endFill=1;endSize=7;fontSize=9;exitX=1.0000;exitY=0.5000;exitDx=0;exitDy=0;entryX=0.0000;entryY=0.5000;entryDx=0;entryDy=0;" parent="1" edge="1" source="task6" target="task7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge15" value="" style="html=1;rounded=0;endArrow=block;endFill=1;endSize=7;fontSize=9;exitX=1.0000;exitY=0.5000;exitDx=0;exitDy=0;entryX=0.0000;entryY=0.5000;entryDx=0;entryDy=0;" parent="1" edge="1" source="task7" target="task8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge16" value="" style="html=1;rounded=0;endArrow=block;endFill=1;endSize=7;fontSize=9;exitX=1.0000;exitY=0.5000;exitDx=0;exitDy=0;entryX=0.0000;entryY=0.5000;entryDx=0;entryDy=0;" parent="1" edge="1" source="task8" target="gw9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge17" value="Có – tuyển bù" style="html=1;rounded=0;endArrow=block;endFill=1;endSize=7;fontSize=9;exitX=0.5000;exitY=1.0000;exitDx=0;exitDy=0;entryX=0.5000;entryY=1.0000;entryDx=0;entryDy=0;" parent="1" edge="1" source="gw9" target="task5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900.0" y="147.0" />
+              <mxPoint x="220.0" y="147.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge18" value="Không" style="html=1;rounded=0;endArrow=block;endFill=1;endSize=7;fontSize=9;exitX=1.0000;exitY=0.5000;exitDx=0;exitDy=0;entryX=0.0000;entryY=0.5000;entryDx=0;entryDy=0;" parent="1" edge="1" source="gw9" target="gw10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge19" value="Chưa – tuần tiếp theo" style="html=1;rounded=0;endArrow=block;endFill=1;endSize=7;fontSize=9;exitX=0.5000;exitY=1.0000;exitDx=0;exitDy=0;entryX=0.5000;entryY=1.0000;entryDx=0;entryDy=0;" parent="1" edge="1" source="gw10" target="task7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1020.0" y="125.0" />
+              <mxPoint x="580.0" y="125.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge20" value="Rồi" style="html=1;rounded=0;endArrow=block;endFill=1;endSize=7;fontSize=9;exitX=1.0000;exitY=0.5000;exitDx=0;exitDy=0;entryX=0.0000;entryY=0.5000;entryDx=0;entryDy=0;" parent="1" edge="1" source="gw10" target="event11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
